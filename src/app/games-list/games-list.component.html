@@ -1,0 +1,45 @@
+<div class="d-flex" style="justify-content: space-evenly; font-size: 20px; cursor: pointer; padding: 20px;">
+  <div (click)="changeLayout('game')">Game</div>
+  <div (click)="changeLayout('contact')">Contact</div>
+</div>
+
+
+<div *ngIf="gameLayout" class="row" style="padding: 20px;">
+<div class="search-container col-4">
+  <div>
+    <input [(ngModel)]="searchTerm" placeholder="Search games..." />
+    <button (click)="clearSearch()">Clear</button>
+  </div>
+  </div>
+  
+  <div *ngIf="loading" class="loading">Loading...</div>
+  
+  <div *ngIf="!loading && filteredGames.length === 0" class="no-results">
+    No games found.
+  </div>
+  
+  <div class="games-list col-8" *ngIf="!loading">
+    <div *ngFor="let game of filteredGames | filter: searchTerm" class="col-12">
+      <div class="row">
+        <div class="game-card">
+          <div>
+            {{game.attributes.name}} <br>
+            Release Date: {{game.attributes.firstReleaseDate | date:'dd/MM/YYYY'}}
+          </div>
+          <br>
+          <div>
+          `{{game.attributes.summary}}
+            
+          </div>
+          <div>
+            <span class="badge bg-secondary">{{(game.attributes.rating)/10 | number:'1.1-2'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!gameLayout">
+<app-contact></app-contact>
+</div>

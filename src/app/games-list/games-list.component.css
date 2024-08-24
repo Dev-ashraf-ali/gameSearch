@@ -1,0 +1,33 @@
+.search-container {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .loading {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .no-results {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .games-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .game-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .game-card img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
